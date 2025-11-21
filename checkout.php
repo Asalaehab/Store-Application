@@ -61,79 +61,28 @@ include('./functions/common_function.php');
             </div>
         </nav>
 
-        <?php
-            cart();
-        ?>
+     
         <!-- end Navbar -->
-
-        <!-- Second Child -->
-        <nav class="navbar navbar-expand-lg">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome Guest</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-            </ul>
-        </nav>
-
-
-        <!-- third child -->
-        <div class="bg-light">
-            <h3 class="text-center">Hidden Store</h3>
-            <p class="text-center">Communication is at the heart of e-commerce and community</p>
-        </div>
-    
-
-
-        <!-- four child -->
-        <div class="row">
-            <div class="col-md-10">
+        <div class="row px-1">
+            <div class="col-md-12">
                 <div class="row">
                     <?php
-                        getproducts();  
-                        get_unique_categories();
-                        get_unique_brands();
-                        
-                        // $ip=get_Ip_Address();
-                        // echo 'Ip Address : '.$ip;
+                    if(!isset($_Session['username'])){
+                        include('./users_area/userLogin.php');
+                    }else{
+                        include('payment.php');
+                    }
                     ?>
                 </div>
             </div>
-            
-            <div class="col-md-2 bg-pink p-0 text-center">   
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item bg-pink-light">
-                        <a href="#" class="nav-link text-light"><h4>Delivery Brands</h4></a>
-                    </li>
+            <!-- col end -->
+        </div>
 
 
-                    <?php
-                        getbrands();
-                    
-                    ?>
-                </ul>
-                <!-- Side Navbar -->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item bg-pink-light">
-                        <a href="#" class="nav-link text-light"><h4>Categories</h4></a>
-                    </li>
-                </ul>
-                <?php
-                getCategory();
-                ?>
-            
-        
-
-            </div>
+    
     
 
-        <!-- Last Child --> 
-        <div class="bg-pink text-white text-center p-2">
-            <p>All Right-Designed for Asala Ehab</p>
-        </div> 
-    </div>
+
     
 
 
