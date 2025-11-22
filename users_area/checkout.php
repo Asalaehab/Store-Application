@@ -70,7 +70,7 @@ include('../functions/common_function.php');
                     if(!isset($_Session['username'])){
                         include('userLogin.php');
                     }else{
-                        include('payment.php');
+                        include('../payment.php');
                     }
                     ?>
                 </div>

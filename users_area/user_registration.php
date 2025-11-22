@@ -138,7 +138,20 @@ if(isset($_POST['userRegister'])){
         
     die("connection failed". mysqli_connect_error());
     }
-}
+    }
+    //select card items
+    $select_card_items="select * from `card_details` 
+    where ip_address='$user_ip'";
+    $exeuted_query=mysqli_query($con,$select_card_items);
+    $row_count=mysqli_num_rows($exeuted_query);
+    if($row_count>0){
+        echo "<script>alert('you have items in card')</script>";
+        echo "<script>window.open('checkout.php','_self')</script>";
+
+    }
+    else{
+        echo "<script>window.open('../index.php','_self')</script>";
+    }
 }
 
 ?>

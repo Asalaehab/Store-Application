@@ -24,6 +24,11 @@ include('./functions/common_function.php');
                 height: 50px;
                 object-fit: contain;
             }
+        
+            body{
+                overflow-x: hidden;
+            }
+
 
         </style>
     </head>
@@ -149,7 +154,7 @@ include('./functions/common_function.php');
                                             $Update_cart="update `card_details` set quantity='$quantity'
                                             where ip_address='$get_ip_add'";
                                             $result_product_quantity=mysqli_query($con,$Update_cart);
-                                            // $total+=$quantity*$productPrice;
+                                            $total+=$quantity*$productPrice;
                                         }
                                         
                                         
@@ -183,7 +188,7 @@ include('./functions/common_function.php');
                 </table>
                         <?php
                             global $con;
-                            $total=0;
+                            
                             $ip=get_Ip_Address();
                             $ip_query="select * from `card_details` where ip_address='$ip'";
                             $ip_result=mysqli_query($con,$ip_query);
@@ -192,7 +197,7 @@ include('./functions/common_function.php');
                             {
                                 echo "
                                     <div class='d-flex'>
-                                        <h4 class='px-3'>SubTotal: <strong class='text-info'>" . $total . "</strong></h4>
+                                        <h4 class='px-3'>SubTotal: <strong class='text-info'>$total </strong></h4>
                                         <a href='index.php' class='bg-info px-3 py-2 text-light m-2 text-decoration-none'>Continue Shopping</a>
                                         <a href='./users_area/checkout.php' class='bg-info px-3 py-2 text-light m-2 text-decoration-none'>Check Out</a>
                                     </div>

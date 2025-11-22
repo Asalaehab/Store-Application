@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Css File -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid my-3">
@@ -57,3 +62,27 @@
     </div>
 </body>
 </html>
+
+
+<?php
+if(isset($_POST['userLogin'])){
+    $username=$_POST['user_username'];
+    $password=$_POST['user_password'];
+
+    $select_query="select * from `user_table` where username='$username'";
+    $result=mysqli_query($con,$select_query);
+    $row_count=mysqli_num_rows($result);
+    $row_data=mysqli_fetch_assoc($result);
+    if($row_count>0){
+            if(password_verify($password,$row_data['userpassword'])){
+                echo "<script>alert('Login Successful')</script>";
+            }else{
+                echo "<script>alert('invalid credentials')</script>";
+            }
+    }else{
+        echo "<script>alert('invalid credentials')</script>";
+    }
+}
+
+
+?>
