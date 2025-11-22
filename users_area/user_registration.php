@@ -44,12 +44,7 @@
                         name="user_image"/>
                     </div>
 
-                    <div class="form-outline ">
-                        <!-- User password -->
-                        <label for="user_password" class="form-label">password</label>
-                        <input type="file" id="user_password" class="form-control"
-                        name="user_password"/>
-                    </div>
+                
 
                     <div class="form-outline ">
                         <!-- User Image -->
