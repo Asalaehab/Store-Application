@@ -1,6 +1,6 @@
 <?php
 // including connect file
-include('../Includes/connect.php');
+// include('../Includes/connect.php');
 
 
 

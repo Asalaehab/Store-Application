@@ -1,7 +1,7 @@
 <!-- connect file -->
 <?php
-include('./Includes/connect.php');
-include('./functions/common_function.php');
+include('../Includes/connect.php');
+include('../functions/common_function.php');
 // include('./search_product.php');
 ?>
 
@@ -68,7 +68,7 @@ include('./functions/common_function.php');
                 <div class="row">
                     <?php
                     if(!isset($_Session['username'])){
-                        include('./users_area/userLogin.php');
+                        include('userLogin.php');
                     }else{
                         include('payment.php');
                     }

@@ -35,13 +35,21 @@
                         <input type="password" id="user_password" class="form-control"
                         name="user_password"/>
                     </div>
+                
 
                 
 
-                    <div class="text-center">
+                    <div class="mt-4 pt-2">
+                        <div class="text-center">
                         <input type="submit" value="Login"
                         class="bg-info py-2  px-3 border-0 m-5 "
                         name="userLogin"/>
+                        </div>
+
+
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account
+                            <a href="user_registration.php" class="text-danger">Register</a>
+                        </p>
                     </div>
                 </form>
             </div>

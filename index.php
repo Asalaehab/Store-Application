@@ -37,7 +37,7 @@ include('./functions/common_function.php');
                     </li>
                     
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="./users_area/userLogin.php">Register</a>
                     </li>
                     
                     <li class="nav-item">

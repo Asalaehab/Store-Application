@@ -194,7 +194,7 @@ include('./functions/common_function.php');
                                     <div class='d-flex'>
                                         <h4 class='px-3'>SubTotal: <strong class='text-info'>" . $total . "</strong></h4>
                                         <a href='index.php' class='bg-info px-3 py-2 text-light m-2 text-decoration-none'>Continue Shopping</a>
-                                        <a href='checkout.php' class='bg-info px-3 py-2 text-light m-2 text-decoration-none'>Check Out</a>
+                                        <a href='./users_area/checkout.php' class='bg-info px-3 py-2 text-light m-2 text-decoration-none'>Check Out</a>
                                     </div>
                                     ";
                             }
