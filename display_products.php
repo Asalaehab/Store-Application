@@ -3,6 +3,7 @@
 include('./Includes/connect.php');
 include('./functions/common_function.php');
 // include('./search_product.php');
+@session_start();
 ?>
 
 <!doctype html>
@@ -64,14 +65,43 @@ include('./functions/common_function.php');
 
         <!-- Second Child -->
         <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome Guest</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
+                <?php
+                    if(!isset($_SESSION['username'])){
+                       echo "
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Welcome Guest</a>
+                        </li>
+                        ";
+                    }else{
+                    echo"
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Welcome  ".$_SESSION['username']."</a>
+                        </li>";
+                    }
+
+                ?>
+
+                 <?php
+                    if(!isset($_SESSION['username'])){
+                       echo "
+                        <li class='nav-item'>
+                        <a class='nav-link' href='./users_area/userLogin.php'>Login</a>
+                        </li>
+                        ";
+                    }else{
+                    echo"
+                        <li class='nav-item'>
+                        <a class='nav-link' href='logout.php'>Logout</a>
+                        </li>";
+                    
+                    }
+
+                ?>
             </ul>
+        </nav>
+
         </nav>
 
 

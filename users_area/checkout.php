@@ -2,7 +2,8 @@
 <?php
 include('../Includes/connect.php');
 include('../functions/common_function.php');
-// include('./search_product.php');
+@session_start();
+
 ?>
 
 <!doctype html>
@@ -30,18 +31,18 @@ include('../functions/common_function.php');
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="display_products.php">products</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Register</a>
+                    <a class="nav-link" href="../display_products.php">products</a>
                     </li>
                     
                     <li class="nav-item">
-                    <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item() ?></sup></a>
+                    <a class="nav-link" href="user_registration.php">Register</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                    <a class="nav-link" href="../cart.php"><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item() ?></sup></a>
                     </li>
                     
                     <li class="nav-item">
@@ -58,6 +59,50 @@ include('../functions/common_function.php');
                     <input type="submit" value="submit" class="btn btn-outline-success " name="search_data_product">
                 </form>
                 </div>
+
+
+                
+        <!-- Second Child -->
+        <nav class="navbar navbar-expand-lg">
+            <ul class="navbar-nav me-auto">
+                <?php
+                    if(!isset($_SESSION['username'])){
+                       echo "
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Welcome Guest</a>
+                        </li>
+                        ";
+                    }else{
+                    echo"
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Welcome  ".$_SESSION['username']."</a>
+                        </li>";
+                    }
+
+                ?>
+
+                 <?php
+                    if(!isset($_SESSION['username'])){
+                       echo "
+                        <li class='nav-item'>
+                        <a class='nav-link' href='./users_area/userLogin.php'>Login</a>
+                        </li>
+                        ";
+                    }else{
+                    echo"
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Logout</a>
+                        </li>";
+                    
+                    }
+
+                ?>
+            </ul>
+        </nav>
+
+
+
+
             </div>
         </nav>
 
@@ -67,7 +112,7 @@ include('../functions/common_function.php');
             <div class="col-md-12">
                 <div class="row">
                     <?php
-                    if(!isset($_Session['username'])){
+                    if(!isset($_SESSION['username'])){
                         include('userLogin.php');
                     }else{
                         include('../payment.php');

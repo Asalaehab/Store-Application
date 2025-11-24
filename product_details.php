@@ -3,6 +3,7 @@
 include('./Includes/connect.php');
 include('./functions/common_function.php');
 // include('./search_product.php');
+@session_start();
 ?>
 
 <!doctype html>

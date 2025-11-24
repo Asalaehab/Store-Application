@@ -1,15 +1,4 @@
 <?php
-// including connect file
-// include('../Includes/connect.php');
-
-
-
-
-
-
-
-
-
 
 //getting products
 function getproducts()

@@ -1,3 +1,8 @@
+<?php
+include_once('../Includes/connect.php');
+include_once('../functions/common_function.php');
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +22,48 @@
     </style>
 </head>
 <body>
+                <!-- Second Child -->
+        <nav class="navbar navbar-expand-lg">
+            <ul class="navbar-nav me-auto">
+                <?php
+            
+
+           if(!isset($_SESSION['username'])){
+                       echo "
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Welcome Guest</a>
+                        </li>
+                        ";
+                    }else{
+                    echo"
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Welcome  ".$_SESSION['username']."</a>
+                        </li>";
+                    }
+
+                ?>
+
+                 <?php
+                    if(!isset($_SESSION['username'])){
+                       echo "
+                        <li class='nav-item'>
+                        <a class='nav-link' href='./users_area/userLogin.php'>Login</a>
+                        </li>
+                        ";
+                    }else{
+                    echo"
+                        <li class='nav-item'>
+                        <a class='nav-link' href='#'>Logout</a>
+                        </li>";
+                    
+                    }
+
+                ?>
+            </ul>
+        </nav>
     <div class="container-fluid my-3">
         <h2 class="text-center">
-            New User Registeration
+            Login
         </h2>
 
         <div class="row d-flex align-items-center justify-content-center">
@@ -65,24 +109,45 @@
 
 
 <?php
-if(isset($_POST['userLogin'])){
-    $username=$_POST['user_username'];
-    $password=$_POST['user_password'];
 
-    $select_query="select * from `user_table` where username='$username'";
-    $result=mysqli_query($con,$select_query);
-    $row_count=mysqli_num_rows($result);
-    $row_data=mysqli_fetch_assoc($result);
-    if($row_count>0){
-            if(password_verify($password,$row_data['userpassword'])){
-                echo "<script>alert('Login Successful')</script>";
-            }else{
-                echo "<script>alert('invalid credentials')</script>";
+// check if i click on submit
+
+if(isset($_POST['userLogin'])){
+    global $con;
+    $username = $_POST['user_username'];
+    $password = $_POST['user_password'];
+    $user_ip = get_Ip_Address();
+
+    // 1) GET USER INFO
+    $user_sql = "select * from user_table where username='$username'";
+    $user_result = mysqli_query($con, $user_sql);
+    $user_count = mysqli_num_rows($user_result);
+    $user_data = mysqli_fetch_assoc($user_result);
+
+    // 2) GET CART ITEMS
+    $cart_sql = "select * from card_details where ip_address='$user_ip'";
+    $cart_result = mysqli_query($con, $cart_sql);
+    $cart_count = mysqli_num_rows($cart_result);
+
+    if($user_count > 0){
+        if(password_verify($password, $user_data['userpassword'])){
+
+            echo "<script>alert('Login Successful')</script>";
+
+            if($cart_count == 0){
+                echo "<script>window.open('profile.php','_self')</script>";
+            } else {
+                echo "<script>window.open('../index.php','_self')</script>";
             }
-    }else{
-        echo "<script>alert('invalid credentials')</script>";
+            
+        } else {
+            echo "<script>alert('Invalid password')</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid username')</script>";
     }
 }
 
 
 ?>
+
