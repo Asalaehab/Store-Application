@@ -28,8 +28,8 @@ include_once('../functions/common_function.php');
                 <?php
             
 
-           if(!isset($_SESSION['username'])){
-                       echo "
+        if(!isset($_SESSION['username'])){
+                    echo "
                         <li class='nav-item'>
                         <a class='nav-link' href='#'>Welcome Guest</a>
                         </li>
@@ -43,7 +43,7 @@ include_once('../functions/common_function.php');
 
                 ?>
 
-                 <?php
+                <?php
                     if(!isset($_SESSION['username'])){
                        echo "
                         <li class='nav-item'>
@@ -137,7 +137,7 @@ if(isset($_POST['userLogin'])){
             if($cart_count == 0){
                 echo "<script>window.open('profile.php','_self')</script>";
             } else {
-                echo "<script>window.open('../index.php','_self')</script>";
+                echo "<script>window.open('payment.php','_self')</script>";
             }
             
         } else {

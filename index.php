@@ -73,7 +73,7 @@ include('./functions/common_function.php');
             <ul class="navbar-nav me-auto">
                 <?php
                     if(!isset($_SESSION['username'])){
-                       echo "
+                    echo "
                         <li class='nav-item'>
                         <a class='nav-link' href='#'>Welcome Guest</a>
                         </li>
